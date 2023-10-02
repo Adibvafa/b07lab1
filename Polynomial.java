@@ -154,7 +154,7 @@ public class Polynomial {
             for (int i = 0; i < coefficients.length; i++) {
                 if (coefficients[i] != 0) {
                     writer.write(coefficients[i] + "x" + exponents[i]);
-                    if (i < coefficients.length - 1) {
+                    if (i < coefficients.length - 1 && coefficients[i] < 0) {
                         writer.write("+");
                     }
                 }
