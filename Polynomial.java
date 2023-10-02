@@ -152,12 +152,10 @@ public class Polynomial {
     public void saveToFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (int i = 0; i < coefficients.length; i++) {
-                if (coefficients[i] != 0) {
-                    writer.write(coefficients[i] + "x" + exponents[i]);
-                    if (i < coefficients.length - 1 && coefficients[i] < 0) {
-                        writer.write("+");
-                    }
-                }
+
+                if (i > 0 && coefficients[i] > 0) writer.write("+");
+                if (exponents[i] != 0) writer.write(Double.toString(coefficients[i]) + "x" + exponents[i]);
+                else writer.write(Double.toString(coefficients[i]));
             }
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
